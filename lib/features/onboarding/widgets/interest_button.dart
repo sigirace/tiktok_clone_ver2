@@ -43,8 +43,8 @@ class _InterestButtonState extends State<InterestButton> {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
-              blurRadius: 5,
-              spreadRadius: 5,
+              blurRadius: 3,
+              spreadRadius: 3,
             ),
           ],
         ),

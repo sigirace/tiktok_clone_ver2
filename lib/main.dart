@@ -20,7 +20,12 @@ class TikTokApp extends StatelessWidget {
           title: 'TikTok Clone',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
+            bottomAppBarTheme: const BottomAppBarTheme(
+              // BottomAppBar의 배경색 지정
+              color: Colors.white, // 원하는 색상으로 변경
+            ),
             appBarTheme: AppBarTheme(
+              scrolledUnderElevation: 0,
               backgroundColor: Colors.white,
               titleTextStyle: TextStyle(
                 color: Colors.black,

@@ -65,7 +65,12 @@ class _InterestsScreenState extends State<InterestsScreen> {
   }
 
   void _onScroll() {
-    if (_scrollController.offset > 120) {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentOffset = _scrollController.offset;
+
+    final scrollPercentage = currentOffset / maxScroll;
+
+    if (scrollPercentage > 0.2) {
       if (_showTitle) return;
       setState(() {
         _showTitle = true;

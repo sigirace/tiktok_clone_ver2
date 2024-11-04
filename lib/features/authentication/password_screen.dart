@@ -17,7 +17,6 @@ class _PasswordScreenState extends State<PasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
   String _password = "";
   bool _obscureText = true;
-  final String _text = "";
 
   @override
   void initState() {
