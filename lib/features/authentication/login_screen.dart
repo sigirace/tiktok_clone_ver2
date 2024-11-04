@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone_ver2/constants/font_sizes.dart';
 import 'package:tiktok_clone_ver2/constants/gaps.dart';
 import 'package:tiktok_clone_ver2/constants/sizes.dart';
+import 'package:tiktok_clone_ver2/features/authentication/login_form_screen.dart';
+import 'package:tiktok_clone_ver2/features/authentication/widgets/auth_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
+
+  void _onSignUpTap(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
+  void _onEmailLoginTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LoginFormScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +33,31 @@ class LoginScreen extends StatelessWidget {
             children: [
               Gaps.v80,
               Text(
-                'Sign up for TikTok',
+                'Log in to TikTok',
                 style: TextStyle(
-                  fontSize: FontSizes.size12,
+                  fontSize: FontSizes.size20,
                   fontWeight: FontWeight.w700,
                 ),
               ),
               Gaps.v20,
-              const Text(
-                  "Create a profile, follow other accounts, make your own videos, and more."),
+              Text(
+                "Create a profile, follow other accounts, make your own videos, and more.",
+                style: TextStyle(
+                  fontSize: FontSizes.size13,
+                  color: Colors.black45,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Gaps.v40,
+              GestureDetector(
+                onTap: () => _onEmailLoginTap(context),
+                child: const AuthButton(
+                  text: "User Email & Password",
+                  icon: FaIcon(
+                    FontAwesomeIcons.user,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -36,14 +67,17 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Already have an account?",
+              "Don't have an account?",
             ),
             Gaps.h5,
-            Text(
-              "Log in",
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.w600,
+            GestureDetector(
+              onTap: () => _onSignUpTap(context),
+              child: Text(
+                "Sign in",
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],

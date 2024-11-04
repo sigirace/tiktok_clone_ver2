@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone_ver2/constants/font_sizes.dart';
 import 'package:tiktok_clone_ver2/constants/gaps.dart';
 import 'package:tiktok_clone_ver2/constants/sizes.dart';
+import 'package:tiktok_clone_ver2/features/authentication/username_screen.dart';
+import 'package:tiktok_clone_ver2/features/authentication/login_screen.dart';
 import 'package:tiktok_clone_ver2/features/authentication/widgets/auth_button.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
+
+  void _onLogInTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
+    );
+  }
+
+  void _onEmailTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => const UsernameScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +50,15 @@ class SignUpScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               Gaps.v40,
-              const AuthButton(text: "Use Phone or Email"),
+              GestureDetector(
+                onTap: () => {
+                  _onEmailTap(context),
+                },
+                child: const AuthButton(
+                  text: "Use Phone or Email",
+                  icon: FaIcon(FontAwesomeIcons.solidEnvelope),
+                ),
+              ),
             ],
           ),
         ),
@@ -48,11 +71,14 @@ class SignUpScreen extends StatelessWidget {
               "Already have an account?",
             ),
             Gaps.h5,
-            Text(
-              "Log in",
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.w600,
+            GestureDetector(
+              onTap: () => _onLogInTap(context),
+              child: Text(
+                "Log in",
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],
