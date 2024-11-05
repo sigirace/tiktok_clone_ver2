@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tiktok_clone_ver2/constants/font_sizes.dart';
+import 'package:tiktok_clone_ver2/constants/sizes.dart';
 import 'package:tiktok_clone_ver2/features/authentication/sign_up_screen.dart';
+import 'package:tiktok_clone_ver2/features/main_navigation/main_navigation_screen.dart';
 import 'package:tiktok_clone_ver2/features/onboarding/interests_screen.dart';
 
 void main() {
@@ -20,9 +22,9 @@ class TikTokApp extends StatelessWidget {
           title: 'TikTok Clone',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
-            bottomAppBarTheme: const BottomAppBarTheme(
-              // BottomAppBar의 배경색 지정
-              color: Colors.white, // 원하는 색상으로 변경
+            bottomAppBarTheme: BottomAppBarTheme(
+              color: Colors.white,
+              height: Sizes.size63.h,
             ),
             appBarTheme: AppBarTheme(
               scrolledUnderElevation: 0,
@@ -36,7 +38,7 @@ class TikTokApp extends StatelessWidget {
             primaryColor: const Color(0xFFE9435A),
             useMaterial3: true,
           ),
-          home: const InterestsScreen(),
+          home: const MainNavigationScreen(),
         );
       },
     );

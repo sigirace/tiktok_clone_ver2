@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone_ver2/constants/gaps.dart';
 import 'package:tiktok_clone_ver2/constants/sizes.dart';
+import 'package:tiktok_clone_ver2/features/main_navigation/main_navigation_screen.dart';
 
 enum Direction {
   left,
@@ -23,6 +24,15 @@ class TutorialScreenFade extends StatefulWidget {
 class _TutorialScreenFadeState extends State<TutorialScreenFade> {
   Direction _direction = Direction.left;
   Page _showingPage = Page.first;
+
+  void _onEnterAppTap() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const MainNavigationScreen(),
+      ),
+      (route) => true,
+    );
+  }
 
   void _onPanUpdate(DragUpdateDetails details) {
     if (details.delta.dx > 0) {
@@ -123,7 +133,7 @@ class _TutorialScreenFadeState extends State<TutorialScreenFade> {
               duration: const Duration(milliseconds: 300),
               child: CupertinoButton(
                 color: Theme.of(context).primaryColor,
-                onPressed: () {},
+                onPressed: _onEnterAppTap,
                 child: const Text("Next"),
               ),
             ),
